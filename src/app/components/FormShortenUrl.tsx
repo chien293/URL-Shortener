@@ -13,14 +13,17 @@ export default function FormShortenUrl() {
   const [shortUrl, setShortUrl] = useState<string>("");
   const [tempShortUrl, setTempShortUrl] = useState<string>("");
   const [customCode, setCustomCode] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
 
   const onFinish = (values: any) => {
+    setLoading(true);
     axiosAPI
       .post("/api/v1/shorten-url", { ...values, custom_code: tempShortUrl })
       .then((response) => {
-        setShortUrl(
-          `${process.env.FE_URL}${response.data.short_url}`
-        );
+        setShortUrl(`${process.env.FE_URL}${response.data.short_url}`);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
@@ -41,7 +44,7 @@ export default function FormShortenUrl() {
 
   const handleInputCustomCode = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
-  
+
     setCustomCode(value);
     if (value.length !== 0) sendCustomCodeToServer(value);
     else setTempShortUrl("");
@@ -86,8 +89,13 @@ export default function FormShortenUrl() {
       </Form.Item>
 
       <Form.Item colon={false} className="flex self-end">
-        <Button type="primary" htmlType="submit">
-          Shorten URL
+        <Button
+          type="primary"
+          htmlType="submit"
+          loading={loading}
+          disabled={loading}
+        >
+          {loading ? "Shortening..." : "Shorten URL"}
         </Button>
       </Form.Item>
 
