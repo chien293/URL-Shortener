@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is an React.js frontend using ExpressJS, Typescript. It provides a simple UI for managing URL. This README provides instructions on how to set up and run the application.
+This project is an React.js frontend using Nextjs, Typescript. It provides a simple UI for managing URL. This README provides instructions on how to set up and run the application.
 
 ## Installation
 
