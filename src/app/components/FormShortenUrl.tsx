@@ -19,7 +19,7 @@ export default function FormShortenUrl() {
       .post("/api/v1/shorten-url", { ...values, custom_code: tempShortUrl })
       .then((response) => {
         setShortUrl(
-          `${process.env.NEXT_PUBLIC_SITE_URL}/${response.data.short_url}`
+          `${process.env.FE_URL}/${response.data.short_url}`
         );
       });
   };
