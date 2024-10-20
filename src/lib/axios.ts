@@ -5,9 +5,8 @@ import axios, {
     InternalAxiosRequestConfig,
   } from "axios";
   
-  //export const BASE_URL = process.env.BASE_URL as string;
-  export const BASE_URL = "http://localhost:10000";
-  console.log(BASE_URL, " base url");
+  export const BASE_URL = process.env.BASE_URL as string;
+  
   const axiosAPI = axios.create({
     baseURL: BASE_URL,
   });

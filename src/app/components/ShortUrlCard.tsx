@@ -23,7 +23,7 @@ export default function ShortUrlCard({ shortUrl }: UrlCardProps) {
       <div className="flex items-center justify-between">
         <p className="select-text break-all m-0 flex-1">{shortUrl}</p>
         {shortUrl && (
-          <Tooltip title={copied ? "Copied!" : "Copy URL"}>
+          <Tooltip title={copied ? "Copied!" : "Copy to Clipboard"}>
             <Button
               icon={copied ? <CheckOutlined /> : <CopyOutlined />}
               onClick={copyToClipboard}
